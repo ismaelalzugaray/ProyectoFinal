@@ -193,7 +193,7 @@ router.get("/productview/:pid", async (req, res) => {
   let pid = req.params.pid;
   let product = await productServices.getById(pid);
 
-  res.render("oneproduct", { pid: pid, product, user });
+  res.render("oneProduct", { pid: pid, product, user });
 });
 
 export default router;
