@@ -22,8 +22,11 @@
     </thead>
   </table>
   <div>
-    <form class="ulForm" method="POST" action="/api/carts/{{userDto.userCart}}/products/{{pid}}">
+    {{#unless user.isAdmin}}
+        <form class="ulForm" method="POST" action="/api/carts/{{user.userCart}}/products/{{pid}}">
         <button  id="addToCart" type="submit">Agregar al carrito</button>
         </form>
+    {{/unless}}
+    
   </div>
 </div>

@@ -5,7 +5,7 @@ const program = new Command();
 program
   .option("-d", "Variable para debug", false)
   .option("-p <port>", "Puerto del server")
-  .option("--mode <mode>", "Modo de trabajo", "devolpment")
+  .option("--mode <mode>", "Modo de trabajo", "production")
   .requiredOption("-u <user>", "El user que va usar la aplicaicon", "user");
 
 program.parse();

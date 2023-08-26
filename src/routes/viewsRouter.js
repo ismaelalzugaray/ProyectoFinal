@@ -13,18 +13,30 @@ const router = express.Router();
 router.get("/products", passportCall("jwt"), async (req, res) => {
   try {
     let uid = req.cookies["id"];
-    let userDB = await userModel.findOne({ _id: uid });
+    let user;
+    if (uid) {
+      let userDB = await userModel.findOne({ _id: uid });
+      user = new userDTO(userDB);
+    } else {
+      user = {
+        firstName: "Admin",
+        lastName: "Account",
+        email: "adminCoder@coder.com",
+        rol: "admin",
+        isAdmin: true,
+      };
+    }
     let { limit, page, sort, query } = req.query;
     const products = await productServices.getAll(limit, page, sort, query);
     products.prevLink = products.hasPrevPage
-      ? `http://localhost:9090/api/views/products?page=${products.prevPage}`
+      ? `/api/views/products?page=${products.prevPage}`
       : "";
     products.nextLink = products.hasNextPage
-      ? `http://localhost:9090/api/views/products?page=${products.nextPage}`
+      ? `/api/views/products?page=${products.nextPage}`
       : "";
     products.isValid = !(page <= 0 || page > products.totalPages);
     const { docs, ...props } = products;
-    let user = new userDTO(userDB);
+
     res.render("productList", { user, docs, ...props });
   } catch (error) {
     req.logger.error(error);
@@ -76,14 +88,19 @@ router.get(
 );
 
 //RENDERIZA EL CHAT
-router.get("/chat", passportCall("jwt"), checkRol(["user", "premium"]), (req, res) => {
-  try {
-    res.render("chat");
-  } catch (error) {
-    req.logger.error(error);
-    res.status(400).json(error.message);
+router.get(
+  "/chat",
+  passportCall("jwt"),
+  checkRol(["user", "premium"]),
+  (req, res) => {
+    try {
+      res.render("chat");
+    } catch (error) {
+      req.logger.error(error);
+      res.status(400).json(error.message);
+    }
   }
-});
+);
 
 //RENDERIZA LA VISTA PARA EL LOGIN
 router.get("/login", (req, res) => {
@@ -109,20 +126,21 @@ router.get("/register", (req, res) => {
 router.get("/current", passportCall("jwt"), async (req, res) => {
   try {
     let uid = req.cookies["id"];
-    if(uid){
-      let user = await userModel.findOne({ _id: uid });
-      let userDto = new userDTO(user);
-      res.render("current", { user: userDto });
-    }else{
-      let user = 
-      {firstName: "Admin",
-      lastName: "Account",
-      email: "adminCoder@coder.com",
-      rol: "admin",
-      isAdmin: true,
+    let user
+    if (uid) {
+      let userDB = await userModel.findOne({ _id: uid });
+      user = new userDTO(userDB);
+    } else {
+       user = {
+        firstName: "Admin",
+        lastName: "Account",
+        fullName: "Admin Account",
+        email: "adminCoder@coder.com",
+        rol: "admin",
+        isAdmin: true,
+      };
     }
-    res.render("current", { user: user });
-  }
+    res.render("current", {user});
   } catch (error) {
     console.log(error);
     res.status(400).json(error.message);
@@ -158,12 +176,24 @@ router.get(
 
 router.get("/productview/:pid", async (req, res) => {
   let uid = req.cookies["id"];
-  let user = await userModel.findOne({ _id: uid });
-  let userDto = new userDTO(user);
+  let user
+  if (uid) {
+    let userDB = await userModel.findOne({ _id: uid });
+     user = new userDTO(userDB);
+  }else{
+    user = {
+      firstName: "Admin",
+      lastName: "Account",
+      email: "adminCoder@coder.com",
+      rol: "admin",
+      isAdmin: true,
+    };
+  }
+
   let pid = req.params.pid;
   let product = await productServices.getById(pid);
 
-  res.render("oneproduct", { pid: pid, product, userDto });
+  res.render("oneproduct", { pid: pid, product, user });
 });
 
 export default router;

@@ -56,7 +56,7 @@ router.post("/login", adminValidation, async (req, res) => {
       .status(201)
       .send({ message: "Login completado con exito", payload: user._id });
   } catch (error) {
-    req.logger.error(error);
+    console.log(error);
     return res
       .status(500)
       .send({ status: "error", error: "Error interno de la applicacion." });
@@ -91,7 +91,7 @@ router.get("/logout", async (req, res) => {
     );
     res.clearCookie("jwtToken",).clearCookie("id").redirect("/api/views/login");
   } catch (error) {
-    eq.logger.error(error);
+    req.logger.error(error);
   }
 });
 
@@ -119,7 +119,7 @@ router.get(
         );
         return res
           .status(200)
-          .redirect("http://localhost:9090/api/views/userlist");
+          .redirect("/api/views/userlist");
       }
 
       if (user.rol == "user") {
@@ -138,7 +138,7 @@ router.get(
           );
           return res
             .status(200)
-            .redirect("http://localhost:9090/api/views/userlist");
+            .redirect("/api/views/userlist");
         } else {
           return res.status(400).send({
             Status: "Error",
@@ -217,7 +217,7 @@ router.get(
   async (req, res) => {
     try {
       const response = await userModel.deleteOne({ _id: req.params.uid });
-      res.status(200).redirect("http://localhost:9090/api/views/userlist");
+      res.status(200).redirect("/api/views/userlist");
     } catch (error) {
       req.logger.error(error);
       res.status(500);
