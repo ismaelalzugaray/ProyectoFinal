@@ -1,0 +1,15 @@
+paths:
+  /api/products/:
+    get:
+      summary: Obtiene todos los productos, puede recibir querys (limit, page, sort, query)
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: Obtuvo los productos con exito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'

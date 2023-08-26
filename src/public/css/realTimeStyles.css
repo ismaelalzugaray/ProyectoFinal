@@ -1,0 +1,77 @@
+.listContainer{
+    text-align: center;
+}
+
+.productTable {
+    white-space: nowrap;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid rgb(0, 0, 0);
+    margin: 0 auto;
+    background-color: rgb(152, 188, 219);
+  }
+  
+.productTable td, tr{
+    text-align: center;
+    padding: 15px;
+    white-space: nowrap;
+    border: 1px solid black;
+    font-size: 15px;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+.productTable th {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+
+.formsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+
+.form{
+    text-align: center;
+    background-color: rgb(152, 188, 219);
+    padding: 5px;
+}
+
+.formLabels{
+    display: block;
+    text-align: center;
+    margin: 10px 0px;
+    font-weight: bold;
+}
+
+.form input{
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+
+.form input:focus{
+    transform: scale(1.1);
+}
+
+.formsContainer button{
+    display: block;
+    margin: 10px auto;
+
+}
+
+#addButton{
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+
+

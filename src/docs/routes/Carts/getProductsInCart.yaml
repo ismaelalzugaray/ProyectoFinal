@@ -1,0 +1,19 @@
+paths:
+  /api/carts/{id}:
+    get:
+      summary: Obtiene un carrito segun el id
+      tags:
+        - Carrito
+      parameters:
+      - name: id
+        in: path
+        description: path parameter takes the product id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Se obtuvo el carrito con exito.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'

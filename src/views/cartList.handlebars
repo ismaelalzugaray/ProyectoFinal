@@ -1,0 +1,27 @@
+<h1>Productos en el carrito</h1>
+
+<table class="productTable">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Categoria</th>
+      <th>Precio</th>
+      <th>Codigo</th>
+      <th>Cantidad</th>
+    </tr>
+    {{#each productsInCart}}
+      <tr>
+        <td>{{this.product._id}}</td>
+        <td>{{this.product.title}}</td>
+        <td>{{this.product.description}}</td>
+        <td>{{this.product.category}}</td>
+        <td>${{this.product.price}}</td>
+        <td>{{this.product.code}}</td>
+        <td>{{this.quantity}}</td>
+      </tr>
+    {{/each}}
+  </thead>
+</table>
+<div><form method="GET" action="/api/carts/{{user.userCart}}/purchase"><button type="submit">Finalizar Compra</button></form></div>

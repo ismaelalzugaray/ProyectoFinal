@@ -1,0 +1,56 @@
+h1{
+    text-align: center;
+}
+.ulContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(152, 188, 219);
+}
+
+.paginateContainer {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(152, 188, 219)
+}
+
+ul li {padding-left: 10px;}
+
+li::marker{
+    content: "»";
+    color: black;
+    font-weight: bolder;
+}
+
+li{
+    font-size: 20px;
+    margin: 10px;
+    
+}
+
+.ulContainer button{
+    background-color: rgba(0,120,150,1);
+    border-radius: 5px;
+    padding: 5px;
+    transition: 0.5s;
+    color: white;
+    font-weight: bold;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.ulContainer button:hover{
+    display: inline;
+    transform: scale(1.1);
+    background-color: rgba(140,64,199,1);
+}
+
+.ulForm {
+    display: inline;
+}
+
+.paginateContainer a{
+    color: white;
+    text-decoration: none;
+}

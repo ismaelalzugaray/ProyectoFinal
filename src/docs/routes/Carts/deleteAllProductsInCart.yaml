@@ -1,0 +1,19 @@
+paths:
+  /api/carts/{cid}:
+    delete:
+      summary: Elimina todo los productos del carrito
+      tags:
+        - Carrito
+      parameters:
+      - name: cid
+        in: path
+        description: path parameter takes the product id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Se eliminaron todos los productos del carrito exito.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'

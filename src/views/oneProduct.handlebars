@@ -1,0 +1,29 @@
+<div>
+  <table class="productTable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Categoria</th>
+        <th>Precio</th>
+        <th>Codigo</th>
+        <th>Stock</th>
+      </tr>
+      {{#each product}}
+        <tr>
+          <td>{{this.title}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.category}}</td>
+          <td>${{this.price}}</td>
+          <td>{{this.code}}</td>
+          <td>{{this.stock}}</td>
+        </tr>
+      {{/each}}
+    </thead>
+  </table>
+  <div>
+    <form class="ulForm" method="POST" action="/api/carts/{{userDto.userCart}}/products/{{pid}}">
+        <button  id="addToCart" type="submit">Agregar al carrito</button>
+        </form>
+  </div>
+</div>

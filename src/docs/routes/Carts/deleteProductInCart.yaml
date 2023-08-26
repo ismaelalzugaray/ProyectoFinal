@@ -1,0 +1,24 @@
+paths:
+  /api/carts/{cid}/products/{pid}:
+    delete:
+      summary: Elimina un producto segun el ID en el carrito
+      tags:
+        - Carrito
+      parameters:
+      - name: cid
+        in: path
+        description: path parameter takes the product id
+        required: true
+        type: string
+      - name: pid
+        in: path
+        description: path parameter takes the product id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Se elimino el producto con exito.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'

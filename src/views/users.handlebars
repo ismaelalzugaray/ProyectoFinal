@@ -1,0 +1,30 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Rol</th>
+            </tr>
+            {{#each users}}
+            <tr>
+                <td>{{this.firstName}}</td>
+                <td>{{this.lastName}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.rol}}</td>
+                <td>
+                    <form method="GET" action="/api/users/premium/{{this.id}}">
+                        <button id="changeUserRol">Cambiar Rol</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="GET" action="/api/users/userdel/{{this.id}}">
+                        <button id="deleteUser">Eliminar Usuario</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </thead>
+    </table>
+</div>

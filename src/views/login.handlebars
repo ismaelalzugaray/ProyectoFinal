@@ -1,0 +1,29 @@
+<div class="loginFormContainer">
+  <h1>Ingrese sus datos para ingresar</h1>
+
+  <form id="loginForm" class="loginForm">
+    <label class="loginFormLabel"> Email </label>
+    <input name="email" />
+
+    <label class="loginFormLabel"> Password </label>
+    <input name="password" />
+    <button class="button" type="submit">Ingresar</button>
+  </form>
+  <div>
+      <a href="/api/views/sendmail">Has olvidado tu contraseña?</a>
+  </div>
+
+  <div>
+    <p>
+      Si no posee una cuenta,
+      <a href="/api/views/register"><strong>Registrarse Aqui!!</strong></a>
+    </p>
+    <p>
+      Tambien podes loguearte con
+      <a href="/github/login"><strong>GitHub!</strong></a>
+    </p>
+  </div>
+
+</div>
+
+<script src="/js/login.js"></script>

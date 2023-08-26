@@ -1,0 +1,19 @@
+paths:
+  /api/carts:
+    post:
+      summary: Crea un nuevo carrito
+      tags:
+        - Carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/NewCart'
+      responses:
+        "200":
+          description: El carrito fue creado con exito.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'

@@ -1,0 +1,32 @@
+
+<div class="ulContainer">
+<h1>Bienvenido <br>{{user.firstName}} - {{user.email}}! <br> rol: {{user.rol}}</h1>
+<button type ="submit" id="logoutButton">Logout</button>
+    <ul class="productsUl">
+        {{#each docs}}
+        <li><strong>Nombre:</strong> {{this.title}}</li>
+
+        <form class="ulForm" method="GET" action="/api/views/productview/{{this.id}}">
+            <button type="submit">Ver detalle</button>
+        </form>
+
+        
+
+        {{/each}}
+    </ul>
+
+</div>
+
+<div class="paginateContainer">
+    {{#if hasPrevPage}}
+        <button><a href={{prevLink}}><< Anterior</a></button>
+    {{/if}}
+    &nbsp;
+    {{page}}
+    &nbsp;
+        {{#if hasNextPage}}
+        <button><a href={{nextLink}}>Siguiente >></a></button>
+    {{/if}} 
+</div>
+
+<script src="/js/product.js"></script>

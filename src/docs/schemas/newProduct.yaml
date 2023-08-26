@@ -1,0 +1,47 @@
+components:
+  requestBodies:
+    NewProduct:
+      type: object
+      required:
+        - title
+        - description
+        - price
+        - code
+        - stock
+        - category
+        - status
+        - owner
+      properties:
+        id:
+          type: string
+          description: Autogenerado por MongoDB.
+        title:
+          type: string
+          description: Nombre del producto.
+        price:
+          type: number
+          description: precio del producto.
+        code:
+          type: string
+          description: Codigo unico el producto.
+        stock:
+          type: number
+          description: Stock disponible del producto.
+        category:
+          type: string
+          description: Categoria del producto.
+        status:
+          type: boolean
+          description: Status del producto.
+        owner:
+          type: string
+          description: Creador del producto.
+      example:
+         id: 4ughd73658fnsk85dh58sk
+         title: desktop computer
+         price: 123.78
+         code: abc123
+         stock: 5
+         category: escritorios
+         status: false
+         owner: admin

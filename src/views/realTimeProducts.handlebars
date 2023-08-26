@@ -1,0 +1,79 @@
+
+  <div class="listContainer">
+    <h1>Lista de Productos:</h1>
+    <table class="productTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th>Categoria</th>
+          <th>Precio</th>
+          <th>Codigo</th>
+          <th>Stock</th>
+        </tr>
+        {{#each products}}
+          <tr>
+            <td>{{this._id}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.category}}</td>
+            <td>${{this.price}}</td>
+            <td>{{this.code}}</td>
+            <td>{{this.stock}}</td>
+          </tr>
+        {{/each}}
+      </thead>
+    </table>
+
+  </div>
+</div>
+
+<div class="formsContainer">
+  <div>
+    <h2>Agregar Productos</h2>
+    <form id="addForm" class="form">
+
+      <label for="addTitle" class="formLabels">Nombre</label>
+      <input type="text" id="addTitle" />
+
+      <label for="addDescription" class="formLabels">Descripcion</label>
+      <input type="text" id="addDescription" />
+
+      <label for="addCategory" class="formLabels">Categoria</label>
+      <input type="text" id="addCategory" />
+
+      <label for="addPrice" class="formLabels">Precio</label>
+      <input type="number" id="addPrice" />
+
+      <label for="addCode" class="formLabels">Codigo</label>
+      <input type="text" id="addCode" />
+
+      <label for="addStock" class="formLabels">Stock</label>
+      <input type="number" id="addStock" />
+
+      <label for="addStatus" class="formLabels">Estado</label>
+      <select name="Status" id="addStatus">
+        <option>true</option>
+        <option>false</option>
+      </select>
+
+      <button type="submit" id="addButton">Agregar</button>
+
+    </form>
+  </div>
+
+  <div>
+    <h2>Eliminar Productos</h2>
+
+    <form class="form">
+      <label for="title" class="formLabels">ID del Producto</label>
+      <input type="text" id="delId" />
+
+      <button type="submit" id="delButton">Eliminar</button>
+    </form>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realTimeProducts.js"></script>

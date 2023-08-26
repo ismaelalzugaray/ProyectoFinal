@@ -1,0 +1,26 @@
+<div>
+  <h1>KretzCommerce</h1>
+  <ul>
+    {{#if user.isAdmin}}
+      <li><a href="http://localhost:9090/api/views/realtimeproducts">Gestion de
+          Productos</a></li>
+      <li><a href="http://localhost:9090/api/views/products">Productos</a></li>
+      <li><a href="http://localhost:9090/api/views/mockingproducts">Mock de
+          Productos</a></li>
+      <li><a href="http://localhost:9090/api/views/userlist">Gestion de
+          Usuarios</a></li>
+    {{else}}
+      <li><a href="http://localhost:9090/api/views/products">Productos</a></li>
+      <li><a href="http://localhost:9090/api/views/carts/{{user.userCart}}">Carrito</a></li>
+      <li><a href="http://localhost:9090/api/views/chat">Chat</a></li>
+    {{/if}}
+  </ul>
+</div>
+<div>
+  <h1>Estos son tus datos</h1>
+  <div>
+    <p>{{user.fullName}}</p>
+    <p>{{user.email}}</p>
+    <p>{{user.age}}</p>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+components:
+  requesbodies:
+    NewCart:
+      type: array
+      required:
+        - products
+      properties:
+        products: 
+          type: array
+          description: Contiene los productos del carrito
+          product:
+            type: string  
+            description: Contiene el id generado por MongoDB que referencia al producto
+            in: "products"
+          quantity:
+            type: number 
+            description: Indica la cantidad del producto que con tiene el carrito
+      example:
+        products:
+          product: 64b4698389a3d5d18b8c3156
+          quantity: 4
